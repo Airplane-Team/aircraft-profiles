@@ -1,17 +1,17 @@
-import { z } from 'zod';
+import { z } from "zod";
 import {
   AllComMapKeys,
   AllFailureMapKeys,
   SimDataDescriptors,
-} from '../simdata/data_descriptors.js';
-import { ValueType } from '../simdata/data_descriptor.js';
-import { TypedEntries } from '../util/typed_entries.js';
-import { AircraftProfile, AircraftProfileSchema } from './aircraft_profile.js';
-import { AircraftProfileEffectiveModel } from '../simdata/effective_simdata_model.js';
-import { RelaxedDataModelCategory } from '../simdata/simdata_types.js';
-import { RelaxedPlatformModelCategory } from './platform_descriptor.js';
-import { XplaneDescriptor } from './xplane_platform_descriptor.js';
-import { kDefaultMapIndexKeys } from '../simdata/effective_set_simdata_model.js';
+} from "../simdata/data_descriptors.js";
+import { ValueType } from "../simdata/data_descriptor.js";
+import { TypedEntries } from "../util/typed_entries.js";
+import { AircraftProfile, AircraftProfileSchema } from "./aircraft_profile.js";
+import { AircraftProfileEffectiveModel } from "../simdata/effective_simdata_model.js";
+import { RelaxedDataModelCategory } from "../simdata/simdata_types.js";
+import { RelaxedPlatformModelCategory } from "./platform_descriptor.js";
+import { XplaneDescriptor } from "./xplane_platform_descriptor.js";
+import { kDefaultMapIndexKeys } from "../simdata/effective_set_simdata_model.js";
 
 /**
  * For certain map-type properties, the data is assembled from multiple individual datarefs
@@ -27,19 +27,19 @@ function GetSpecialCaseMapKeys(
   categoryName: string,
   dataName: string
 ): readonly string[] | undefined {
-  if (categoryName === 'failures') {
+  if (categoryName === "failures") {
     switch (dataName) {
-      case 'isFailed':
-      case 'scheduledAtAltitudeFtAgl':
-      case 'scheduledAtAirspeedKias':
+      case "isFailed":
+      case "scheduledAtAltitudeFtAgl":
+      case "scheduledAtAirspeedKias":
         return AllFailureMapKeys;
     }
   }
-  if (categoryName === 'radiosNavigation') {
+  if (categoryName === "radiosNavigation") {
     switch (dataName) {
-      case 'frequencyHz':
-      case 'standbyFrequencyHz':
-      case 'comShouldSwapFrequencies':
+      case "frequencyHz":
+      case "standbyFrequencyHz":
+      case "comShouldSwapFrequencies":
         return AllComMapKeys;
     }
   }
@@ -98,7 +98,7 @@ function ValidateMapKeysAgainstDescriptors(profile: AircraftProfile): z.ZodIssue
 
       if (!isMapType) {
         addWarning(
-          ['xplane', String(categoryName), String(dataName), 'descriptor', 'mapKeys'],
+          ["xplane", String(categoryName), String(dataName), "descriptor", "mapKeys"],
           `Descriptor type '${effectiveDescriptor.type}' does not support mapKeys. Only NumberMap, BooleanMap, and StringMap types support mapKeys.`
         );
         continue;
@@ -112,10 +112,10 @@ function ValidateMapKeysAgainstDescriptors(profile: AircraftProfile): z.ZodIssue
         const unmatched = profileMapKeys.filter(k => !specialCaseMapKeys.includes(k));
         if (unmatched.length > 0) {
           addWarning(
-            ['xplane', String(categoryName), String(dataName), 'descriptor', 'mapKeys'],
-            `'mapKeys' [${unmatched.join(', ')}] not found in special mapKeys for '${String(
+            ["xplane", String(categoryName), String(dataName), "descriptor", "mapKeys"],
+            `'mapKeys' [${unmatched.join(", ")}] not found in special mapKeys for '${String(
               dataName
-            )}': [${specialCaseMapKeys.join(', ')}]`
+            )}': [${specialCaseMapKeys.join(", ")}]`
           );
         }
         continue;
@@ -133,10 +133,10 @@ function ValidateMapKeysAgainstDescriptors(profile: AircraftProfile): z.ZodIssue
         const unmatched = profileMapKeys.filter(k => !effectiveMapKeys.includes(k));
         if (unmatched.length > 0) {
           addWarning(
-            ['xplane', String(categoryName), String(dataName), 'arrayIndexNameMap'],
+            ["xplane", String(categoryName), String(dataName), "arrayIndexNameMap"],
             `'arrayIndexNameMap' [${unmatched.join(
-              ', '
-            )}] not found in model's mapKeys: [${effectiveMapKeys.join(', ')}]`
+              ", "
+            )}] not found in model's mapKeys: [${effectiveMapKeys.join(", ")}]`
           );
         }
       }

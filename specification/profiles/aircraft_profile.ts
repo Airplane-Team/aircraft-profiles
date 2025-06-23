@@ -1,10 +1,10 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-import { AircraftCodes } from '../aircraft_types.js';
+import { AircraftCodes } from "../aircraft_types.js";
 import {
   XPlanePlatformDescriptors,
   XPlanePlatformDescriptorsSchema,
-} from './xplane_platform_descriptor.js';
+} from "./xplane_platform_descriptor.js";
 
 /** Schema for a Profile for an aircraft that Shirley can support. */
 export const AircraftProfileSchema = z
@@ -62,6 +62,6 @@ export const AircraftProfileSchema = z
  *         equivalent at runtime.
  * @see AircraftProfileSchema
  */
-export type AircraftProfile = Omit<z.infer<typeof AircraftProfileSchema>, 'xplane'> & {
+export type AircraftProfile = Omit<z.infer<typeof AircraftProfileSchema>, "xplane"> & {
   xplane?: XPlanePlatformDescriptors;
 };

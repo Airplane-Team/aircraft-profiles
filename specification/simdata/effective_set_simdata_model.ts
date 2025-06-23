@@ -1,18 +1,18 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-import { TypedEntries } from '../util/typed_entries.js';
-import { SimPlatform, ValueType, Visibility, Writability } from './data_descriptor.js';
+import { TypedEntries } from "../util/typed_entries.js";
+import { SimPlatform, ValueType, Visibility, Writability } from "./data_descriptor.js";
 import {
   PartialSimDataModel,
   RelaxedSetSimData,
   RelaxedSimData,
   RelaxedSimDataModel,
-} from './simdata_types.js';
-import { SetSimData, SetSimDataSchema } from './set_simdata_schemas.js';
-import { SimData } from './simdata_schemas.js';
+} from "./simdata_types.js";
+import { SetSimData, SetSimDataSchema } from "./set_simdata_schemas.js";
+import { SimData } from "./simdata_schemas.js";
 
 /** Default map keys for number, string, and boolean maps. */
-export const kDefaultMapIndexKeys = ['0'] as const;
+export const kDefaultMapIndexKeys = ["0"] as const;
 
 /** Merges two SetSimData into a new object by overwriting the baseSetpoints with the newSetpoints.
  * @param baseSetpoints The base setpoints to merge atop of.

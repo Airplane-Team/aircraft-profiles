@@ -7,9 +7,9 @@ import {
   SetLights,
   SetRadiosNavigation,
   SetSystems,
-} from './set_simdata_schemas.js';
-import { DataDescriptor, ValueTypes } from './data_descriptor.js';
-import { SimDataDescriptors } from './data_descriptors.js';
+} from "./set_simdata_schemas.js";
+import { DataDescriptor, ValueTypes } from "./data_descriptor.js";
+import { SimDataDescriptors } from "./data_descriptors.js";
 
 /** Complete data model providing a `DataDescriptor` for all sim data in all categories. */
 export type SimDataModel = typeof SimDataDescriptors;
@@ -32,8 +32,7 @@ export type DataName =
   | keyof typeof SimDataDescriptors.environment
   | keyof typeof SimDataDescriptors.initialization
   | keyof typeof SimDataDescriptors.simulation
-  | keyof typeof SimDataDescriptors.freezes
-  | keyof typeof SimDataDescriptors.highlight;
+  | keyof typeof SimDataDescriptors.freezes;
 
 /** All valid data categories in `SimDataModel`. */
 export const DataCategories = Object.keys(SimDataDescriptors) as DataCategory[];

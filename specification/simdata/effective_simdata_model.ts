@@ -1,5 +1,5 @@
-import { TypedEntries } from '../util/typed_entries.js';
-import { DataDescriptor } from './data_descriptor.js';
+import { TypedEntries } from "../util/typed_entries.js";
+import { DataDescriptor } from "./data_descriptor.js";
 import {
   RelaxedDataModelCategory,
   RelaxedOverrideDataModelCategory,
@@ -7,13 +7,13 @@ import {
   RelaxedSimDataOverrideDataModel,
   SimDataModel,
   SimDataOverrideModel,
-} from './simdata_types.js';
+} from "./simdata_types.js";
 import {
   PlatformDescriptor,
   PlatformSimDataModel,
   RelaxedPlatformDataModel,
-} from '../profiles/platform_descriptor.js';
-import { AircraftProfile } from '../profiles/aircraft_profile.js';
+} from "../profiles/platform_descriptor.js";
+import { AircraftProfile } from "../profiles/aircraft_profile.js";
 
 /** Extracts the sim data overrides from the platform overrides.
  * @param platformOverrides The platform overrides to extract sim data overrides from.
@@ -120,8 +120,8 @@ export function AircraftProfileEffectiveModel(
   // Now we just replace a few descriptors per the profile: flaps and speedbrakes
   if (profile?.flapsSetpoints && effectiveModel.levers.flapsHandlePercentDown) {
     const flapsSetpointsDescription = profile.flapsSetpoints
-      .map((setpoint) => `${setpoint.percent}% for ${setpoint.name}`)
-      .join(', ');
+      .map(setpoint => `${setpoint.percent}% for ${setpoint.name}`)
+      .join(", ");
     newLeversCategory.flapsHandlePercentDown = {
       ...effectiveModel.levers.flapsHandlePercentDown,
       description: flapsSetpointsDescription,
@@ -130,8 +130,8 @@ export function AircraftProfileEffectiveModel(
 
   if (profile?.speedbrakesSetpoints && effectiveModel.levers.speedBrakesHandlePercentDeployed) {
     const speedbrakesSetpointsDescription = profile.speedbrakesSetpoints
-      .map((setpoint) => `${setpoint.percent}% for ${setpoint.name}`)
-      .join(', ');
+      .map(setpoint => `${setpoint.percent}% for ${setpoint.name}`)
+      .join(", ");
     newLeversCategory.speedBrakesHandlePercentDeployed = {
       ...effectiveModel.levers.speedBrakesHandlePercentDeployed,
       description: speedbrakesSetpointsDescription,
@@ -140,7 +140,7 @@ export function AircraftProfileEffectiveModel(
 
   const profileEffectiveModel = {
     ...effectiveModel,
-    levers: newLeversCategory as SimDataModel['levers'],
+    levers: newLeversCategory as SimDataModel["levers"],
   };
   return profileEffectiveModel;
 }

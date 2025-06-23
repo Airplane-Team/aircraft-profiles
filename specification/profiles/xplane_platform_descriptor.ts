@@ -1,9 +1,9 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-import { PlatformDescriptorSchema, PlatformSimDataModel } from './platform_descriptor.js';
-import { XPDataref } from './xplane_datarefs.js';
-import { XPCommandRef } from './xplane_commands.js';
-import { SimDataDescriptors } from '../simdata/data_descriptors.js';
+import { PlatformDescriptorSchema, PlatformSimDataModel } from "./platform_descriptor.js";
+import { XPDataref } from "./xplane_datarefs.js";
+import { XPCommandRef } from "./xplane_commands.js";
+import { SimDataDescriptors } from "../simdata/data_descriptors.js";
 
 /** Schema describing properties needed to convert from X-Plane to Shirley `SimData`.
  * Including any overrides for the Shirley DataDescriptor of the same path.
@@ -71,7 +71,7 @@ export const XplaneDescriptorSchema = PlatformDescriptorSchema.extend({
  */
 export type XplaneDescriptor = Omit<
   z.infer<typeof XplaneDescriptorSchema>,
-  'dataref' | 'command'
+  "dataref" | "command"
 > & { dataref?: XPDataref; command?: { ref: XPCommandRef; durationS?: number } };
 
 /** SimDataDescriptor overrides for X-Plane and PlatformDescriptor used by X-Plane client. */

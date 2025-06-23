@@ -1,8 +1,8 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-import { DataDescriptorSchema } from '../simdata/data_descriptor.js';
-import { SimDataDescriptors } from '../simdata/data_descriptors.js';
-import { DataCategory, DataName } from '../simdata/simdata_types.js';
+import { DataDescriptorSchema } from "../simdata/data_descriptor.js";
+import { SimDataDescriptors } from "../simdata/data_descriptors.js";
+import { DataCategory, DataName } from "../simdata/simdata_types.js";
 
 /** Schema describing how to read a value from sim platform (e.g. X-Plane 12)
  * into a DataDescriptor. */

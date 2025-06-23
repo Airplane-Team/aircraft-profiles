@@ -1,4 +1,4 @@
-import { DataDescriptor, ValueType, Visibility, Writability } from './data_descriptor.js';
+import { DataDescriptor, ValueType, Visibility, Writability } from "./data_descriptor.js";
 
 const PositionSimData = {
   latitudeDeg: {
@@ -117,22 +117,22 @@ const IndicatorsSimData = {
   lowRotorRPMWarningOn: {
     type: ValueType.Boolean,
     visibility: Visibility.Never,
-    description: 'true if rotor RPM too low, false otherwise',
+    description: "true if rotor RPM too low, false otherwise",
   },
   totalEnergyVariometerFpm: {
     type: ValueType.Number,
     visibility: Visibility.Never,
-    description: 'estimate rate energy change in feet per minute',
+    description: "estimate rate energy change in feet per minute",
   },
   stallWarningOn: {
     type: ValueType.Boolean,
     visibility: Visibility.Always,
-    description: 'true if stall warning is active',
+    description: "true if stall warning is active",
   },
   altimeterSettingInchesMercury: {
     type: ValueType.Number,
     visibility: Visibility.Tool,
-    description: 'pilot side',
+    description: "pilot side",
     precision: 2,
     range: [24, 35],
     writableByPlatform: { xplane12: Writability.AfterRead },
@@ -140,13 +140,13 @@ const IndicatorsSimData = {
   slipSkidBallRightDeflectionPercent: {
     type: ValueType.Number,
     visibility: Visibility.Always,
-    description: '-100 is full left',
+    description: "-100 is full left",
     range: [-200, 200], // ±200% to account for over-deflection
   },
   yawStringRightSideslipDeg: {
     type: ValueType.Number,
     visibility: Visibility.Never,
-    description: 'negative for left',
+    description: "negative for left",
     range: [-180, 180],
   },
 } as const;
@@ -154,7 +154,7 @@ const IndicatorsSimData = {
 const LeversSimData = {
   flapsHandlePercentDown: {
     type: ValueType.Number,
-    description: '100 full down deployed',
+    description: "100 full down deployed",
     range: [0, 100],
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
@@ -182,7 +182,7 @@ const LeversSimData = {
   conditionLeverPercentHigh: {
     type: ValueType.NumberMap,
     visibility: Visibility.Never,
-    description: '0 low idle/feather/cutoff, 100 high idle/full',
+    description: "0 low idle/feather/cutoff, 100 high idle/full",
     range: [0, 100],
   },
   mixtureLeverPercentRich: {
@@ -209,7 +209,7 @@ const LeversSimData = {
 } as const;
 
 /** All `mapKeys` for supported radios. */
-export const AllComMapKeys = ['com1', 'com2', 'nav1', 'nav2'] as const;
+export const AllComMapKeys = ["com1", "com2", "nav1", "nav2"] as const;
 
 const RadiosNavSimData = {
   frequencyHz: {
@@ -226,7 +226,7 @@ const RadiosNavSimData = {
   comShouldSwapFrequencies: {
     type: ValueType.BooleanMap,
     visibility: Visibility.Never,
-    description: 'simultaneous with standbyFrequencyHz to change active',
+    description: "simultaneous with standbyFrequencyHz to change active",
     writableByPlatform: { xplane12: Writability.Always },
     mapKeys: AllComMapKeys,
   },
@@ -239,17 +239,17 @@ const RadiosNavSimData = {
 
 /** Contains all supported modes that the autopilot can use to control the aircraft's altitude. */
 export const AutopilotAltitudeModes = [
-  'disabled',
-  'pitch',
-  'verticalSpeed',
-  'levelChange',
-  'altitudeHold',
-  'terrain',
-  'glideSlope',
-  'VNAV',
-  'TOGA',
-  'flightPathAngle',
-  'VNAVSpeed',
+  "disabled",
+  "pitch",
+  "verticalSpeed",
+  "levelChange",
+  "altitudeHold",
+  "terrain",
+  "glideSlope",
+  "VNAV",
+  "TOGA",
+  "flightPathAngle",
+  "VNAVSpeed",
 ] as const;
 
 const AutoPilotSimData = {
@@ -272,20 +272,20 @@ const AutoPilotSimData = {
     type: ValueType.String,
     visibility: Visibility.Tool,
     description:
-      'allows setting altitudeHold and verticalSpeed modes only - requires autopilot engaged',
+      "allows setting altitudeHold and verticalSpeed modes only - requires autopilot engaged",
     enumValues: AutopilotAltitudeModes,
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
   targetVerticalSpeedFpm: {
     type: ValueType.Number,
     visibility: Visibility.Tool,
-    description: 'positive for climb, negative for decent',
+    description: "positive for climb, negative for decent",
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
   shouldLevelWings: {
     type: ValueType.Boolean,
     visibility: Visibility.Never,
-    description: 'also engages autopilot',
+    description: "also engages autopilot",
     writableByPlatform: { xplane12: Writability.Always },
   },
   magneticHeadingBugDeg: {
@@ -335,17 +335,17 @@ const SystemsSimData = {
 
 /** Keys supported for failures - engines start with 0 for farthest left */
 export const AllFailureMapKeys = [
-  'LeftEngineSeize',
-  'RightEngineSeize',
-  'EngineSeize',
-  'PitotBlockage',
-  'StaticBlockage',
-  'Gps1Failure',
-  'Bus1Failure',
-  'Battery1Failure',
-  'Generator1Failure',
-  'Navigation1Failure',
-  'Navigation2Failure',
+  "LeftEngineSeize",
+  "RightEngineSeize",
+  "EngineSeize",
+  "PitotBlockage",
+  "StaticBlockage",
+  "Gps1Failure",
+  "Bus1Failure",
+  "Battery1Failure",
+  "Generator1Failure",
+  "Navigation1Failure",
+  "Navigation2Failure",
 ] as const;
 
 /** Type for supported failure keys.
@@ -357,14 +357,14 @@ const FailuresSimData = {
   scheduledAtAltitudeFtAgl: {
     type: ValueType.NumberMap,
     visibility: Visibility.Always,
-    description: 'fails at next cross then clears - setting 0 clears',
+    description: "fails at next cross then clears - setting 0 clears",
     writableByPlatform: { xplane12: Writability.Always },
     mapKeys: AllFailureMapKeys,
   },
   scheduledAtAirspeedKias: {
     type: ValueType.NumberMap,
     visibility: Visibility.Always,
-    description: 'fails at next cross then clears - setting 0 clears',
+    description: "fails at next cross then clears - setting 0 clears",
     writableByPlatform: { xplane12: Writability.Always },
     mapKeys: AllFailureMapKeys,
   },
@@ -383,68 +383,68 @@ const WeightBalanceSimData = {
 } as const;
 
 /** All cloud layer keys that shirley can see & use. */
-export const AllCloudLayerKeys = ['1', '2', '3'] as const;
+export const AllCloudLayerKeys = ["1", "2", "3"] as const;
 /** All wind layer keys that shirley can see & use. */
-export const AllWindLayerKeys = ['1', '2', '3'] as const;
+export const AllWindLayerKeys = ["1", "2", "3"] as const;
 
 /** All supported cloud types. */
-export const AllCloudTypes = ['cirrus', 'stratus', 'cumulus', 'cumulonimbus'] as const;
+export const AllCloudTypes = ["cirrus", "stratus", "cumulus", "cumulonimbus"] as const;
 /** All supported runway conditions. */
 export const RunwayConditions = [
-  'dry',
-  'lightlyWet',
-  'wet',
-  'veryWet',
-  'lightlyPuddly',
-  'puddly',
-  'veryPuddly',
-  'lightlySnowy',
-  'snowy',
-  'verySnowy',
-  'lightlyIcy',
-  'icy',
-  'veryIcy',
-  'lightlySnowyAndIcy',
-  'snowyAndIcy',
-  'verySnowyAndIcy',
+  "dry",
+  "lightlyWet",
+  "wet",
+  "veryWet",
+  "lightlyPuddly",
+  "puddly",
+  "veryPuddly",
+  "lightlySnowy",
+  "snowy",
+  "verySnowy",
+  "lightlyIcy",
+  "icy",
+  "veryIcy",
+  "lightlySnowyAndIcy",
+  "snowyAndIcy",
+  "verySnowyAndIcy",
 ] as const;
 
 /** All supported weather evolutions. */
 export const WeatherEvolutions = [
-  'improvingRapidly',
-  'improving',
-  'improvingSlowly',
-  'static',
-  'deterioratingSlowly',
-  'deteriorating',
-  'deterioratingRapidly',
-  'realWorldWeather',
+  "improvingRapidly",
+  "improving",
+  "improvingSlowly",
+  "static",
+  "deterioratingSlowly",
+  "deteriorating",
+  "deterioratingRapidly",
+  "realWorldWeather",
 ] as const;
 
 const EnvironmentSimData = {
   aircraftWindHeadingDeg: {
     type: ValueType.Number,
     visibility: Visibility.State, // for charting
-    description: 'wind heading at aircraft',
+    description: "wind heading at aircraft",
     range: [0, 360],
     writableByPlatform: { xplane12: Writability.Never },
   },
   aircraftWindSpeedKts: {
     type: ValueType.Number,
     visibility: Visibility.State, // for charting
-    description: 'wind speed at aircraft',
+    description: "wind speed at aircraft",
     writableByPlatform: { xplane12: Writability.Never },
   },
   zuluTimeHours: {
     type: ValueType.Number,
-    description: 'hours UTC',
+    description: "hours UTC",
     precision: 2,
     range: [0, 24],
     writableByPlatform: { xplane12: Writability.Always },
   },
   dayOfYear: {
     type: ValueType.Number,
-    description: '0-364',
+    description: "0-364",
     range: [0, 365],
     visibility: Visibility.Tool,
     writableByPlatform: { xplane12: Writability.AfterRead },
@@ -474,7 +474,7 @@ const EnvironmentSimData = {
   cloudLayerCoveragePercent: {
     type: ValueType.NumberMap,
     visibility: Visibility.Tool,
-    description: '100 for overcast',
+    description: "100 for overcast",
     range: [0, 100],
     mapKeys: AllCloudLayerKeys,
     writableByPlatform: { xplane12: Writability.AfterRead },
@@ -495,7 +495,7 @@ const EnvironmentSimData = {
   windLayerAltitudeFt: {
     type: ValueType.NumberMap,
     visibility: Visibility.Tool,
-    description: 'enable wind layer first',
+    description: "enable wind layer first",
     range: [0, 70000],
     mapKeys: AllWindLayerKeys,
     writableByPlatform: { xplane12: Writability.AfterRead },
@@ -503,7 +503,7 @@ const EnvironmentSimData = {
   windLayerDirectionDeg: {
     type: ValueType.NumberMap,
     visibility: Visibility.Tool,
-    description: '0 enable wind layer first',
+    description: "0 enable wind layer first",
     range: [0, 360],
     mapKeys: AllWindLayerKeys,
     writableByPlatform: { xplane12: Writability.AfterRead },
@@ -511,14 +511,14 @@ const EnvironmentSimData = {
   windLayerSpeedKts: {
     type: ValueType.NumberMap,
     visibility: Visibility.Tool,
-    description: 'enable wind layer first',
+    description: "enable wind layer first",
     mapKeys: AllWindLayerKeys,
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
   windLayerTurbulencePercent: {
     type: ValueType.NumberMap,
     visibility: Visibility.Tool,
-    description: 'calm to extreme, enable wind layer first',
+    description: "calm to extreme, enable wind layer first",
     range: [0, 100],
     mapKeys: AllWindLayerKeys,
     writableByPlatform: { xplane12: Writability.AfterRead },
@@ -526,20 +526,20 @@ const EnvironmentSimData = {
   windLayerGustIncreaseKts: {
     type: ValueType.NumberMap,
     visibility: Visibility.Tool,
-    description: 'enable wind layer first',
+    description: "enable wind layer first",
     mapKeys: AllWindLayerKeys,
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
   visibilityMiles: {
     type: ValueType.Number,
     visibility: Visibility.Tool,
-    description: 'in region; statute miles',
+    description: "in region; statute miles",
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
   seaLevelPressureInchesMercury: {
     type: ValueType.Number,
     visibility: Visibility.Tool,
-    description: 'in region',
+    description: "in region",
     precision: 2,
     range: [24, 35],
     writableByPlatform: { xplane12: Writability.AfterRead },
@@ -553,14 +553,14 @@ const EnvironmentSimData = {
   rainPercent: {
     type: ValueType.Number,
     visibility: Visibility.Tool,
-    description: 'rain requires clouds',
+    description: "rain requires clouds",
     range: [0, 100],
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
   groundTemperatureDegC: {
     type: ValueType.Number,
     visibility: Visibility.Always,
-    description: 'in region',
+    description: "in region",
     precision: 1,
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
@@ -568,26 +568,26 @@ const EnvironmentSimData = {
     type: ValueType.Number,
     visibility: Visibility.Tool,
     precision: 1,
-    description: 'ft/min where thermals present',
+    description: "ft/min where thermals present",
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
   weatherEvolution: {
     type: ValueType.String,
     visibility: Visibility.Tool,
-    description: 'static best for custom weather',
+    description: "static best for custom weather",
     enumValues: WeatherEvolutions,
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
   shouldUseCurrentWeather: {
     type: ValueType.Boolean,
     visibility: Visibility.Tool,
-    description: 'true to use current date, time and weather conditions',
+    description: "true to use current date, time and weather conditions",
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
   shouldRegenerateWeather: {
     type: ValueType.Boolean,
     visibility: Visibility.Never,
-    description: 'true immediately regenerates',
+    description: "true immediately regenerates",
     writableByPlatform: { xplane12: Writability.Always },
   },
 } as const;
@@ -604,7 +604,7 @@ const SimulationSimData = {
   aircraftName: {
     type: ValueType.String,
     visibility: Visibility.Tool,
-    description: 'sim name of the aircraft being flown',
+    description: "sim name of the aircraft being flown",
   },
   isPaused: {
     type: ValueType.Boolean,
@@ -614,13 +614,13 @@ const SimulationSimData = {
   simSpeedRatio: {
     type: ValueType.Number,
     visibility: Visibility.Tool,
-    description: 'setting toggles between 1x 2x 4x; pause/unpause for 1x',
+    description: "setting toggles between 1x 2x 4x; pause/unpause for 1x",
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
   isCrashed: {
     type: ValueType.Boolean,
     visibility: Visibility.ToolAndAlwaysWhenTrue,
-    description: 'can be used to uncrash',
+    description: "can be used to uncrash",
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
 } as const;
@@ -631,43 +631,6 @@ const FreezesSimData = {
     type: ValueType.Boolean,
     visibility: Visibility.Never,
     writableByPlatform: { xplane12: Writability.Always },
-  },
-} as const;
-
-const HighlightSimData = {
-  leftThumbwheelHighlighted: {
-    type: ValueType.Boolean,
-    visibility: Visibility.Tool,
-    writableByPlatform: { xplane12: Writability.Always },
-  },
-  leftLeverHighlighted: {
-    type: ValueType.Boolean,
-    visibility: Visibility.Tool,
-    writableByPlatform: { xplane12: Writability.Always },
-  },
-  leftCollectiveHighlighted: {
-    type: ValueType.Boolean,
-    visibility: Visibility.Tool,
-    writableByPlatform: { xplane12: Writability.Always },
-  },
-  leftStickHighlighted: {
-    type: ValueType.Boolean,
-    visibility: Visibility.Tool,
-    writableByPlatform: { xplane12: Writability.Always },
-  },
-  highlightDurationSeconds: {
-    type: ValueType.Number,
-    visibility: Visibility.Tool,
-    writableByPlatform: { xplane12: Writability.Always },
-    description: 'duration in seconds for control highlights',
-    range: [0, 60],
-  },
-  flashPeriodSeconds: {
-    type: ValueType.Number,
-    visibility: Visibility.Tool,
-    writableByPlatform: { xplane12: Writability.Always },
-    description: 'period in seconds for control highlight flashing',
-    range: [0, 10],
   },
 } as const;
 
@@ -691,5 +654,4 @@ export const SimDataDescriptors = {
   >,
   simulation: SimulationSimData as Record<keyof typeof SimulationSimData, DataDescriptor>,
   freezes: FreezesSimData as Record<keyof typeof FreezesSimData, DataDescriptor>,
-  highlight: HighlightSimData as Record<keyof typeof HighlightSimData, DataDescriptor>,
 } as const;

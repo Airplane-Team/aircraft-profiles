@@ -1,12 +1,12 @@
-import { SimPlatform, Visibility, Writability } from '../simdata/data_descriptor.js';
-import { RelaxedSimDataModel, SimDataModel } from '../simdata/simdata_types.js';
-import { TypedEntries } from '../util/typed_entries.js';
+import { SimPlatform, Visibility, Writability } from "../simdata/data_descriptor.js";
+import { RelaxedSimDataModel, SimDataModel } from "../simdata/simdata_types.js";
+import { TypedEntries } from "../util/typed_entries.js";
 import {
   PlatformDescriptor,
   PlatformSimDataModel,
   RelaxedPlatformDataModel,
   RelaxedPlatformModelCategory,
-} from './platform_descriptor.js';
+} from "./platform_descriptor.js";
 
 /**
  * Combines base platform descriptors with aircraft profile descriptors to create a

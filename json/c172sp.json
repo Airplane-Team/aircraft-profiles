@@ -1,11 +1,7 @@
 {
   "aircraftCode": "c172sp",
   "aircraftName": "Cessna Skyhawk 172SP",
-  "additionalDetails": [
-    "fixed gear",
-    "flaps",
-    "direct drive propeller"
-  ],
+  "additionalDetails": ["fixed gear", "flaps", "direct drive propeller"],
   "xplane": {
     "levers": {
       "mixtureLeverPercentRich": {

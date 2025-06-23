@@ -1,5 +1,5 @@
-import { TypedEntries } from '../util/typed_entries.js';
-import { DataDescriptor, ValueType, ValueTypes } from './data_descriptor.js';
+import { TypedEntries } from "../util/typed_entries.js";
+import { DataDescriptor, ValueType, ValueTypes } from "./data_descriptor.js";
 
 /** Guard on `value`, true when its declared `type` is `Boolean` aka `boolean`. */
 export function ValueIsBoolean(value: ValueTypes, type: ValueType): value is boolean {

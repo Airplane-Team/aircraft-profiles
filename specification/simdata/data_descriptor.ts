@@ -1,55 +1,55 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 /** Describes the sim platform that Shirley can connect to. */
 export enum SimPlatform {
   /** X-Plane 12 */
-  Xplane12 = 'xplane12',
+  Xplane12 = "xplane12",
   /** Microsoft Flight Simulator 2020 */
-  Msfs2020 = 'msfs2020',
+  Msfs2020 = "msfs2020",
   /** Generic sim platform. */
-  Generic = 'generic',
+  Generic = "generic",
 }
 
 /** Whether & when Shirley can see a data value. */
 export enum Visibility {
   /** Always visible in Shirley state XML. */
-  Always = 'always',
+  Always = "always",
   /** Visible in Shirley state XML when value is truthy, always accessible by tool call. */
-  ToolAndAlwaysWhenTrue = 'toolAndAlwaysWhenTrue',
+  ToolAndAlwaysWhenTrue = "toolAndAlwaysWhenTrue",
   /** Returned by a tool call when Shirley requests it. */
-  Tool = 'tool',
+  Tool = "tool",
   /** Visible in Shirley state XML when enabled by a challenge state or requested by tool call. */
-  State = 'state',
+  State = "state",
   /** Usable by system tools, but not visible in Shirley state XML or by Shirley tools. */
-  System = 'system',
+  System = "system",
   /** Not available anywhere. Might not even be sent to the server. */
-  Never = 'never',
+  Never = "never",
 }
 
 /** Whether & when Shirley can write a data value. */
 export enum Writability {
   /** Shirley can always write the data value via a tool call. */
-  Always = 'always',
+  Always = "always",
   /** Shirley can write the data value after the data value has been read at least once.
    * @remark If used with `Visibility.Never`, the data value will never be writable.
    * @remark Otherwise the data value will be writable after it has been received by the Shirley system,
    *         even if it has not been present in any challenge state or tool call.
    */
-  AfterRead = 'afterRead',
+  AfterRead = "afterRead",
   /** Usable by tool calls, but not visible/usable by the `SetSimSetpoints` function. */
-  System = 'system',
+  System = "system",
   /** Shirley cannot write the data value. */
-  Never = 'never',
+  Never = "never",
 }
 
 /** Type of data that Shirley can access for a specific `DataName`. */
 export enum ValueType {
-  Number = 'number',
-  NumberMap = 'numberMap',
-  Boolean = 'boolean',
-  BooleanMap = 'booleanMap',
-  String = 'string',
-  StringMap = 'stringMap',
+  Number = "number",
+  NumberMap = "numberMap",
+  Boolean = "boolean",
+  BooleanMap = "booleanMap",
+  String = "string",
+  StringMap = "stringMap",
 }
 
 /** Types of the values that Shirley can access for a specific `DataName`. */
