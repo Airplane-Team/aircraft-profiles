@@ -1,0 +1,163 @@
+{
+  "aircraftCode": "c172sp",
+  "aircraftName": "Cessna Skyhawk 172SP",
+  "additionalDetails": [
+    "fixed gear",
+    "flaps",
+    "direct drive propeller"
+  ],
+  "xplane": {
+    "levers": {
+      "mixtureLeverPercentRich": {
+        "descriptor": {
+          "visibility": "always"
+        }
+      },
+      "landingGearHandlePercentDown": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      }
+    },
+    "indicators": {
+      "propellerRpm": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      },
+      "manifoldPressureInchesMercury": {
+        "descriptor": {
+          "visibility": "tool"
+        }
+      },
+      "engineRpm": {
+        "descriptor": {
+          "description": "max 2700",
+          "visibility": "always"
+        }
+      }
+    },
+    "failures": {
+      "isFailed": {
+        "descriptor": {
+          "mapKeys": [
+            "PitotBlockage",
+            "StaticBlockage",
+            "Gps1Failure",
+            "Navigation1Failure",
+            "Navigation2Failure",
+            "Bus1Failure",
+            "Battery1Failure",
+            "Generator1Failure",
+            "EngineSeize"
+          ]
+        }
+      },
+      "scheduledAtAirspeedKias": {
+        "descriptor": {
+          "mapKeys": [
+            "PitotBlockage",
+            "StaticBlockage",
+            "Gps1Failure",
+            "Navigation1Failure",
+            "Navigation2Failure",
+            "Bus1Failure",
+            "Battery1Failure",
+            "Generator1Failure",
+            "EngineSeize"
+          ]
+        }
+      },
+      "scheduledAtAltitudeFtAgl": {
+        "descriptor": {
+          "mapKeys": [
+            "PitotBlockage",
+            "StaticBlockage",
+            "Gps1Failure",
+            "Navigation1Failure",
+            "Navigation2Failure",
+            "Bus1Failure",
+            "Battery1Failure",
+            "Generator1Failure",
+            "EngineSeize"
+          ]
+        }
+      }
+    },
+    "autopilot": {
+      "isFlightDirectorEngaged": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      }
+    }
+  },
+  "aircraftVSpeeds": [
+    {
+      "name": "Vg",
+      "kias": 68
+    },
+    {
+      "name": "Vso",
+      "kias": 40
+    },
+    {
+      "name": "Vs",
+      "kias": 48
+    },
+    {
+      "name": "Vr",
+      "kias": 55
+    },
+    {
+      "name": "Vx",
+      "kias": 62
+    },
+    {
+      "name": "Vy",
+      "kias": 74
+    },
+    {
+      "name": "Va 2550",
+      "kias": 105
+    },
+    {
+      "name": "Va 1900",
+      "kias": 90
+    },
+    {
+      "name": "Vfe 10º",
+      "kias": 110
+    },
+    {
+      "name": "Vfe >10º",
+      "kias": 85
+    },
+    {
+      "name": "Vno",
+      "kias": 129
+    },
+    {
+      "name": "Vne",
+      "kias": 163
+    }
+  ],
+  "flapsSetpoints": [
+    {
+      "name": "Up",
+      "percent": 0
+    },
+    {
+      "name": "Takeoff 10 degrees",
+      "percent": 33
+    },
+    {
+      "name": "Landing 20 degrees",
+      "percent": 67
+    },
+    {
+      "name": "Landing 30 degrees",
+      "percent": 100
+    }
+  ]
+}
