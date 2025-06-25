@@ -1,6 +1,3 @@
-import { ExtractValues } from "../util/extract_values.js";
-import { Flatten } from "../util/flatten.js";
-
 /** X-Plane Commands Reference */
 export const XPCommandRefs = {
   autopilot: {
@@ -33,9 +30,3 @@ export const XPCommandRefs = {
     regenerate: "sim/operation/regen_weather",
   },
 } as const;
-
-/** Type encompassing all defined X-Plane Commands */
-export type XPCommandRef = ExtractValues<typeof XPCommandRefs>;
-
-/** Array of all X-Plane commands used by sim client. */
-export const AllXplaneCommands: readonly XPCommandRef[] = Flatten(XPCommandRefs) as XPCommandRef[];

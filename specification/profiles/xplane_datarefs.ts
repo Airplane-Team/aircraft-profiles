@@ -1,6 +1,3 @@
-import { ExtractValues } from "../util/extract_values.js";
-import { Flatten } from "../util/flatten.js";
-
 /** X-Plane Datarefs Reference */
 export const XPDatarefs = {
   aircraft: {
@@ -167,9 +164,3 @@ export const XPDatarefs = {
     updateImmediately: "sim/weather/region/update_immediately",
   },
 } as const;
-
-/** Type encompassing all X-Plane Datarefs */
-export type XPDataref = ExtractValues<typeof XPDatarefs>;
-
-/** Array of all X-Plane datarefs used by sim client. */
-export const AllXplaneDatarefs: readonly XPDataref[] = Flatten(XPDatarefs) as XPDataref[];
