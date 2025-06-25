@@ -7,8 +7,13 @@ If you need help, you can join us on our [Discord server](https://airplane.team/
 ## Folders
 
 - **[JSON](./json)**: Sample aircraft profiles written in JSON format.
-- **[TypeScript](./typescript)**: Sample aircraft profiles written in TypeScript.
-- **[Specification](./specification)**: Contains the type formats and validation schema for aircraft profiles.
+- **[Specification](./specification)**: Contains the type formats and schema for aircraft profiles.
+
+## Profile Overview
+
+Aircraft profiles use data descriptors to bridge the gap between Shirley's standardized data model and the specific implementation details of different aircraft in X-Plane. Each profile contains an optional `xplane` section that organizes data descriptors into categories like `position`, `levers`, `indicators`, and `systems`, where each descriptor maps an aircraft feature to a specific data field in the simulation.
+
+All Airplane team's aircraft profiles are available to help you get started making your own profiles. Simply go to the aircraft profile creator [page](https://airplane.team/fly/aircraft/create), scroll down to the bottom of the editor, and select the check box labeled `Always Use Profile Editor`. Now you can select any supported aircraft in the drop down menu and view its json content.
 
 ## Shirley Aircraft Profile Maker
 
@@ -40,25 +45,6 @@ The most up to date production version of the Profile Creator can be found at:
 
 https://airplane.team/fly/aircraft/create
 
-Copy and paste your profile file into the Shirley Profile Creator. The supported formats are JSON and variant of TypeScript.
-
-For profiles in Typescript, you can copy the whole file, but it must be a single profile object with no derived properties. There are also certain restrictions- most notably, no `//` inside a string and no strings with single quotes `' example '`.
+Copy and paste your JSON profile file into the Shirley Profile Creator.
 
 For access to the latest features, join our [Discord server](https://airplane.team/discord) and ask to join the beta test group.
-
-## Converting Typescript Profile to JSON
-
-You can add this code to convert a TS profile to JSON, if you need to:
-
-```typescript
-const jsonString = JSON.stringify(yourProfileName, null, 2);
-
-import { writeFileSync } from "fs";
-const fileName = "profile.out.json";
-const outputPath = "json/" + fileName;
-writeFileSync(outputPath, jsonString);
-
-console.log(`Wrote ${fileName} to ${outputPath}`);
-```
-
-You can execute this code by running `npx ts-node typescript/c172sp.ts` in the root directory of the repo.
