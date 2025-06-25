@@ -3,21 +3,20 @@
     "ts-node": "^10.9.2",
     "zod": "^3.22.4"
   },
-  "name": "sample-aircraft-profiles",
+  "name": "aircraft-profiles",
   "version": "1.0.0",
   "description": "This repository contains a collection of sample Shirley Aircraft Profiles created by the Airplane Team and community. You can use these profiles as a reference when creating your own!",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Airplane-Team/sample-aircraft-profiles.git"
+    "url": "git+https://github.com/Airplane-Team/aircraft-profiles.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Airplane-Team/sample-aircraft-profiles/issues"
+    "url": "https://github.com/Airplane-Team/aircraft-profiles/issues"
   },
-  "homepage": "https://github.com/Airplane-Team/sample-aircraft-profiles#readme"
+  "homepage": "https://github.com/Airplane-Team/aircraft-profiles#readme"
 }
