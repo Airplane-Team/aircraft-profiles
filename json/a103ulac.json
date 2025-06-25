@@ -1,0 +1,79 @@
+{
+  "aircraftCode": "a103ulac",
+  "aircraftName": "Aerolite 103 ultralight",
+  "profileName": "Generic Single Engine Piston with Fixed Gear",
+  "additionalDetails": ["Single-engine piston aircraft", "fixed landing gear"],
+  "xplane": {
+    "levers": {
+      "mixtureLeverPercentRich": {
+        "descriptor": {
+          "visibility": "always"
+        }
+      },
+      "landingGearHandlePercentDown": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      }
+    },
+    "indicators": {
+      "propellerRpm": {
+        "descriptor": {
+          "visibility": "always"
+        }
+      },
+      "manifoldPressureInchesMercury": {
+        "descriptor": {
+          "visibility": "always"
+        }
+      }
+    },
+    "failures": {
+      "isFailed": {
+        "descriptor": {
+          "mapKeys": [
+            "PitotBlockage",
+            "StaticBlockage",
+            "Gps1Failure",
+            "Navigation1Failure",
+            "Navigation2Failure",
+            "Bus1Failure",
+            "Battery1Failure",
+            "Generator1Failure",
+            "EngineSeize"
+          ]
+        }
+      },
+      "scheduledAtAirspeedKias": {
+        "descriptor": {
+          "mapKeys": [
+            "PitotBlockage",
+            "StaticBlockage",
+            "Gps1Failure",
+            "Navigation1Failure",
+            "Navigation2Failure",
+            "Bus1Failure",
+            "Battery1Failure",
+            "Generator1Failure",
+            "EngineSeize"
+          ]
+        }
+      },
+      "scheduledAtAltitudeFtAgl": {
+        "descriptor": {
+          "mapKeys": [
+            "PitotBlockage",
+            "StaticBlockage",
+            "Gps1Failure",
+            "Navigation1Failure",
+            "Navigation2Failure",
+            "Bus1Failure",
+            "Battery1Failure",
+            "Generator1Failure",
+            "EngineSeize"
+          ]
+        }
+      }
+    }
+  }
+}

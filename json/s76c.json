@@ -1,0 +1,127 @@
+{
+  "aircraftCode": "s76c",
+  "aircraftName": "Sikorsky S-76C",
+  "additionalDetails": ["Twin Turbomeca Arriel 2S2 engines", "retractable gear"],
+  "xplane": {
+    "levers": {
+      "collectivePercentUp": {
+        "descriptor": {
+          "visibility": "always"
+        }
+      },
+      "flapsHandlePercentDown": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      }
+    },
+    "indicators": {
+      "rotorRpm": {
+        "ratio": 0.3246753246753247,
+        "descriptor": {
+          "visibility": "always",
+          "description": "percent of max continuous; normal range 100(293 rpm)-108%"
+        }
+      },
+      "engineN1Percent": {
+        "arrayIndexNameMap": {
+          "0": "LeftEngine",
+          "1": "RightEngine"
+        },
+        "descriptor": {
+          "visibility": "always",
+          "mapKeys": ["LeftEngine", "RightEngine"]
+        }
+      },
+      "engineTorqueFtLb": {
+        "ratio": 0.004273504273504274,
+        "arrayIndexNameMap": {
+          "0": "LeftEngine",
+          "1": "RightEngine"
+        },
+        "descriptor": {
+          "visibility": "always",
+          "description": "percent torque normal range 0-100%",
+          "mapKeys": ["LeftEngine", "RightEngine"]
+        }
+      },
+      "engineIttDegC": {
+        "arrayIndexNameMap": {
+          "0": "LeftEngine",
+          "1": "RightEngine"
+        },
+        "descriptor": {
+          "visibility": "always",
+          "mapKeys": ["LeftEngine", "RightEngine"]
+        }
+      },
+      "lowRotorRPMWarningOn": {
+        "descriptor": {
+          "visibility": "always"
+        }
+      },
+      "stallWarningOn": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      }
+    },
+    "failures": {
+      "isFailed": {
+        "descriptor": {
+          "mapKeys": [
+            "PitotBlockage",
+            "StaticBlockage",
+            "Gps1Failure",
+            "Navigation1Failure",
+            "Navigation2Failure",
+            "Bus1Failure",
+            "Battery1Failure",
+            "Generator1Failure",
+            "LeftEngineSeize",
+            "RightEngineSeize"
+          ]
+        }
+      },
+      "scheduledAtAirspeedKias": {
+        "descriptor": {
+          "mapKeys": [
+            "PitotBlockage",
+            "StaticBlockage",
+            "Gps1Failure",
+            "Navigation1Failure",
+            "Navigation2Failure",
+            "Bus1Failure",
+            "Battery1Failure",
+            "Generator1Failure",
+            "LeftEngineSeize",
+            "RightEngineSeize"
+          ]
+        }
+      },
+      "scheduledAtAltitudeFtAgl": {
+        "descriptor": {
+          "mapKeys": [
+            "PitotBlockage",
+            "StaticBlockage",
+            "Gps1Failure",
+            "Navigation1Failure",
+            "Navigation2Failure",
+            "Bus1Failure",
+            "Battery1Failure",
+            "Generator1Failure",
+            "LeftEngineSeize",
+            "RightEngineSeize"
+          ]
+        }
+      }
+    },
+    "autopilot": {
+      "isFlightDirectorEngaged": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      }
+    }
+  }
+}
