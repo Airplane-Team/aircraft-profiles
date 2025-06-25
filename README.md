@@ -13,7 +13,7 @@ If you need help, you can join us on our [Discord server](https://airplane.team/
 
 Aircraft profiles use data descriptors to bridge the gap between Shirley's standardized data model and the specific implementation details of different aircraft in X-Plane. Each profile contains an optional `xplane` section that organizes data descriptors into categories like `position`, `levers`, `indicators`, and `systems`, where each descriptor maps an aircraft feature to a specific data field in the simulation.
 
-All of the Airplane team official aircraft profiles are available to help you get started making your own profiles. Simply go to the aircraft profile creator [page](https://airplane.team/fly/aircraft/create), scroll down to the bottom of the editor, and select the check box labeled `Always Use Profile Editor`. Now you can select any supported aircraft in the drop down menu and view its json content.
+All of the Airplane team official aircraft profiles are available to help you get started making your own! Simply go to the aircraft profile creator [page](https://airplane.team/fly/aircraft/create), scroll down to the bottom of the editor, and select the check box labeled `Always Use Profile Editor`. Now you can select any supported aircraft in the drop down menu and view its json content.
 
 ## Shirley Aircraft Profile Maker
 
