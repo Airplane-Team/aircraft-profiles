@@ -1,0 +1,138 @@
+{
+  "aircraftCode": "ask21",
+  "aircraftName": "Alexander Schleicher ASK-21",
+  "additionalDetails": ["Two-seat glider", "Pilot sees airspeed in km/h"],
+  "aircraftVSpeeds": [
+    {
+      "name": "Vs (Solo)",
+      "kias": 35
+    },
+    {
+      "name": "Vs (Dual)",
+      "kias": 40
+    },
+    {
+      "name": "Vs (Solo, Airbrakes)",
+      "kias": 37
+    },
+    {
+      "name": "Vs (Dual, Airbrakes)",
+      "kias": 42
+    },
+    {
+      "name": "Va",
+      "kias": 97
+    },
+    {
+      "name": "Vra",
+      "kias": 108
+    },
+    {
+      "name": "Vne",
+      "kias": 151
+    },
+    {
+      "name": "Vapp",
+      "kias": 49
+    }
+  ],
+  "speedbrakesSetpoints": [
+    {
+      "name": "Retracted",
+      "percent": 0
+    },
+    {
+      "name": "Half",
+      "percent": 50
+    },
+    {
+      "name": "Full",
+      "percent": 100
+    }
+  ],
+  "xplane": {
+    "indicators": {
+      "totalEnergyVariometerFpm": {
+        "descriptor": {
+          "description": "in feet per minute; 1000 is gauge max, -1000 is gauge min"
+        }
+      },
+      "stallWarningOn": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      },
+      "yawStringRightSideslipDeg": {
+        "descriptor": {
+          "visibility": "always"
+        }
+      }
+    },
+    "systems": {
+      "totalEnergyAudioSwitchOn": {
+        "descriptor": {
+          "visibility": "always"
+        }
+      },
+      "pitotHeatSwitchOn": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      }
+    },
+    "levers": {
+      "landingGearHandlePercentDown": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      },
+      "throttlePercentOpen": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      },
+      "flapsHandlePercentDown": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      }
+    },
+    "autopilot": {
+      "isAutopilotEngaged": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      },
+      "isFlightDirectorEngaged": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      },
+      "isHeadingSelectEnabled": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      },
+      "altitudeMode": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      },
+      "magneticHeadingBugDeg": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      },
+      "altitudeBugFt": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      },
+      "targetVerticalSpeedFpm": {
+        "descriptor": {
+          "visibility": "never"
+        }
+      }
+    }
+  }
+}
