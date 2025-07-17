@@ -38,7 +38,7 @@ export const AircraftProfileSchema = z
      * @remark When undefined, Shirley can still set any percentage.
      * @remark When empty, no flaps setpoints are available.
      */
-    flapsSetpoints: z.array(z.object({ name: z.string(), percent: z.number() })).optional(),
+    flapsSetpoints: z.array(z.object({ name: z.string().min(1), percent: z.number() })).optional(),
 
     /** When set Shirley sees equivalent % setpoints for speedbrakes setpoint names.
      *
@@ -46,13 +46,40 @@ export const AircraftProfileSchema = z
      *
      * @remark When undefined or empty, no speedbrakes setpoints are available.
      */
-    speedbrakesSetpoints: z.array(z.object({ name: z.string(), percent: z.number() })).optional(),
+    speedbrakesSetpoints: z
+      .array(z.object({ name: z.string().min(1), percent: z.number() }))
+      .optional(),
 
     /** Specifies speeds that Shirley can reference by name.
      *
      * E.g. `[{"name": "Vr", "kias": 50}, {"name": "Vy", "kias": 73}, ...]`
      */
-    aircraftVSpeeds: z.array(z.object({ name: z.string(), kias: z.number() })).optional(),
+    aircraftVSpeeds: z.array(z.object({ name: z.string().min(1), kias: z.number() })).optional(),
+
+    /** Specifies additional optional properties for the aircraft. */
+    properties: z
+      .object({
+        /** Specifies voice-activated control highlighting in X-Plane.
+         *
+         * @remark User lowercase for matching.
+         *
+         * E.g. `[{"triggers": ["stick", "side stick"], "commandRef": "flys/highlight/left_stick"}]`
+         */
+        highlightXplaneControls: z
+          .array(
+            z.object({
+              /** The phrases that trigger the highlight command for a given control. */
+              triggers: z.array(z.string().min(1)),
+              /** The command ref to set active when the triggers are detected. */
+              commandRef: z.string(),
+            })
+          )
+          .optional(),
+        /** Specifies the pitch of the aircraft when resting on the ground. */
+        groundPitchDegUp: z.number().optional(),
+      })
+      .strict()
+      .optional(),
   })
   .strict();
 

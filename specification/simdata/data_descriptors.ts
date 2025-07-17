@@ -27,7 +27,7 @@ const PositionSimData = {
   gpsGroundSpeedKts: {
     type: ValueType.Number,
   },
-  verticalSpeedFpm: {
+  verticalSpeedUpFpm: {
     type: ValueType.Number,
   },
 } as const;
@@ -39,6 +39,7 @@ const AttitudeSimData = {
   },
   pitchAngleDegUp: {
     type: ValueType.Number,
+    writableByPlatform: { xplane12: Writability.System },
     range: [-90, 90],
   },
   magneticHeadingDeg: {
@@ -155,13 +156,13 @@ const LeversSimData = {
   flapsHandlePercentDown: {
     type: ValueType.Number,
     description: "100 full down deployed",
-    range: [0, 100],
+    range: [-100, 100],
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
   speedBrakesHandlePercentDeployed: {
     type: ValueType.Number,
     visibility: Visibility.Never,
-    range: [0, 100],
+    range: [-100, 100],
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
   landingGearHandlePercentDown: {
@@ -338,6 +339,7 @@ export const AllFailureMapKeys = [
   "LeftEngineSeize",
   "RightEngineSeize",
   "EngineSeize",
+  "AliaPusherSeize",
   "PitotBlockage",
   "StaticBlockage",
   "Gps1Failure",
