@@ -1,3 +1,6 @@
+import { ExtractValues } from "../util/extract_values.js";
+import { Flatten } from "../util/flatten.js";
+
 /** X-Plane Datarefs Reference */
 export const XPDatarefs = {
   aircraft: {
@@ -10,7 +13,7 @@ export const XPDatarefs = {
     autopilot: {
       headingBugMagDeg: "sim/cockpit/autopilot/heading_mag",
       altitudeBugFt: "sim/cockpit/autopilot/altitude",
-      targetVerticalSpeedFpm: "sim/cockpit/autopilot/vertical_velocity",
+      targetVerticalSpeedUpFpm: "sim/cockpit/autopilot/vertical_velocity",
     },
     radios: {
       com1FrequencyDeciHz: "sim/cockpit/radios/com1_freq_hz",
@@ -88,7 +91,7 @@ export const XPDatarefs = {
       kias: "sim/flightmodel/position/indicated_airspeed",
       gpsSpeedMps: "sim/flightmodel/position/groundspeed",
       groundSpeedKts: "sim/flightmodel/position/groundspeed",
-      verticalSpeedFpm: "sim/flightmodel/position/vh_ind_fpm",
+      verticalSpeedUpFpm: "sim/flightmodel/position/vh_ind_fpm",
       altitudeAglM: "sim/flightmodel/position/y_agl",
       altitudeMslM: "sim/flightmodel/position/elevation",
       latitudeDeg: "sim/flightmodel/position/latitude",
@@ -107,7 +110,7 @@ export const XPDatarefs = {
       q: "sim/flightmodel/position/q",
     },
     controls: {
-      brakesOn: "sim/flightmodel/controls/parkbrake",
+      parkingBrakeOn: "sim/flightmodel/controls/parkbrake",
     },
     failures: {
       lowRotorSpeedWarning: "sim/flightmodel/failures/lo_rotor_warning",
@@ -120,6 +123,7 @@ export const XPDatarefs = {
     seize: {
       seize0: "sim/operation/failures/rel_seize_0",
       seize1: "sim/operation/failures/rel_seize_1",
+      seize4: "sim/operation/failures/rel_seize_4",
     },
     pitotStatic: {
       pitotFailure: "sim/operation/failures/rel_pitot",
@@ -140,6 +144,7 @@ export const XPDatarefs = {
     zuluTimeSeconds: "sim/time/zulu_time_sec",
     dayOfYear: "sim/time/local_date_days",
     simSpeedRatio: "sim/time/sim_speed_actual",
+    groundSpeedRatio: "sim/time/ground_speed",
     isPaused: "sim/time/paused",
   },
   weather: {
@@ -164,3 +169,9 @@ export const XPDatarefs = {
     updateImmediately: "sim/weather/region/update_immediately",
   },
 } as const;
+
+/** Type encompassing all X-Plane Datarefs */
+export type XPDataref = ExtractValues<typeof XPDatarefs>;
+
+/** Array of all X-Plane datarefs used by sim client. */
+export const AllXplaneDatarefs: readonly XPDataref[] = Flatten(XPDatarefs) as XPDataref[];
