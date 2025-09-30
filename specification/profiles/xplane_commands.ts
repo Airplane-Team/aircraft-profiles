@@ -1,3 +1,6 @@
+import { ExtractValues } from "../util/extract_values.js";
+import { Flatten } from "../util/flatten.js";
+
 /** X-Plane Commands Reference */
 export const XPCommandRefs = {
   autopilot: {
@@ -12,6 +15,7 @@ export const XPCommandRefs = {
     pauseToggle: "sim/operation/pause_toggle",
     flightModelSpeedToggle: "sim/operation/flightmodel_speed_change",
     loadSituationOne: "sim/operation/load_situation_1",
+    resetFlight: "sim/operation/reset_flight",
   },
   engines: {
     propBetaEnabledToggle: "sim/engines/beta_toggle",
@@ -29,4 +33,15 @@ export const XPCommandRefs = {
   weather: {
     regenerate: "sim/operation/regen_weather",
   },
+  betaA250ControlHighlighting: {
+    leftThumbwheel: "flys/highlight/left_thumbwheel",
+    leftLever: "flys/highlight/left_lift_lever",
+    leftStick: "flys/highlight/left_stick",
+  },
 } as const;
+
+/** Type encompassing all defined X-Plane Commands */
+export type XPCommandRef = ExtractValues<typeof XPCommandRefs>;
+
+/** Array of all X-Plane commands used by sim client. */
+export const AllXplaneCommands: readonly XPCommandRef[] = Flatten(XPCommandRefs) as XPCommandRef[];

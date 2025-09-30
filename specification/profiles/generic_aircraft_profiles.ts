@@ -3,35 +3,37 @@ import { Visibility } from "../simdata/data_descriptor.js";
 import { FailureMapKey } from "../simdata/data_descriptors.js";
 
 /** Failures for pitot-static systems */
-const kPitotStaticFailureMapKeys: FailureMapKey[] = ["PitotBlockage", "StaticBlockage"];
+export const kPitotStaticFailureMapKeys: FailureMapKey[] = ["PitotBlockage", "StaticBlockage"];
+
 /** Failures for GPS systems */
-const kIfrFailureMapKeys: FailureMapKey[] = [
+export const kIfrFailureMapKeys: FailureMapKey[] = [
   "Gps1Failure",
   "Navigation1Failure",
   "Navigation2Failure",
 ];
+
 /** Failures for electrical systems */
-const kElectricalFailureMapKeys: FailureMapKey[] = [
+export const kElectricalFailureMapKeys: FailureMapKey[] = [
   "Bus1Failure",
   "Battery1Failure",
   "Generator1Failure",
 ];
 
 /** Standard failures for all IFR-equipped aircraft */
-const kStandardAircraftFailureMapKeys: FailureMapKey[] = [
+export const kStandardAircraftFailureMapKeys: FailureMapKey[] = [
   ...kPitotStaticFailureMapKeys,
   ...kIfrFailureMapKeys,
   ...kElectricalFailureMapKeys,
 ];
 
 /** Failures appropriate for IFR-equipped single-engine aircraft */
-const kSingleEngineFailureMapKeys: FailureMapKey[] = [
+export const kSingleEngineFailureMapKeys: FailureMapKey[] = [
   ...kStandardAircraftFailureMapKeys,
   "EngineSeize",
 ];
 
 /** Failures appropriate for IFR-equipped twin-engine aircraft */
-const kTwinEngineFailureMapKeys: FailureMapKey[] = [
+export const kTwinEngineFailureMapKeys: FailureMapKey[] = [
   ...kStandardAircraftFailureMapKeys,
   "LeftEngineSeize",
   "RightEngineSeize",
@@ -77,7 +79,7 @@ export const kAutoPilotDisabledOptions = {
   altitudeMode: { descriptor: { visibility: Visibility.Never } },
   magneticHeadingBugDeg: { descriptor: { visibility: Visibility.Never } },
   altitudeBugFt: { descriptor: { visibility: Visibility.Never } },
-  targetVerticalSpeedFpm: { descriptor: { visibility: Visibility.Never } },
+  targetVerticalSpeedUpFpm: { descriptor: { visibility: Visibility.Never } },
 };
 
 /** Generic profile for Simple (minimally electric) Carbureted Single Engine Piston aircraft */
@@ -425,7 +427,7 @@ export const SinglePistonHelicopterProfile: AircraftProfile = {
     },
     systems: {
       governorSwitchOn: { descriptor: { visibility: Visibility.Always } },
-      brakesOn: { descriptor: { visibility: Visibility.Never } },
+      parkingBrakeOn: { descriptor: { visibility: Visibility.Never } },
     },
     failures: SingleEngineFailures,
     autopilot: kAutoPilotDisabledOptions,

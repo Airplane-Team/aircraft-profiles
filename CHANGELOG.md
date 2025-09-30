@@ -5,6 +5,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Version numbers are assigned in Github Releases using `worker`'s version number from [Shirley Changelog](https://airplane.team/changelog).
 
+## [v2.14.0 beta] - 2025-09-29
+
+The 2.14 beta is on the staging environment. See [README.md#Testing](./README.md#Testing) for more information.
+
+### Added
+
+- `offset` property to `xplane_platform_descriptor.ts` to convert the dataref value to the quantity Shirley sees.
+- `shouldResetFlight` property to `xplane_platform_descriptor.ts` to reset the flight.
+
+### Changed
+
+- `positionFreezeEnabled` is now additionally visible to Shirley via `xplane_platform_descriptor.ts`.
+- `parkingBrakeOn` is new name for `brakesOn` in `xplane_platform_descriptor.ts`.
+- `targetVerticalSpeedUpFpm` is new name for `targetVerticalSpeedFpm` in `xplane_platform_descriptor.ts`.
+
 ## [v2.12.0] - 2025-07-17
 
 ### Added

@@ -73,12 +73,10 @@ const FrontendXPlanePlatformDescriptorsInternal = {
       dataref: XPDatarefs.cockpit.radios.nav2StandbyFrequencyDeciHz,
       ratio: kNumHzPerDeciHz,
     },
-    engine0Seize: {
-      dataref: XPDatarefs.operationFailures.seize.seize0,
+    weatherUpdateImmediately: {
+      dataref: XPDatarefs.weather.updateImmediately,
     },
-    engine1Seize: {
-      dataref: XPDatarefs.operationFailures.seize.seize1,
-    },
+    // Coordinate system descriptors
     localX: {
       dataref: XPDatarefs.flightModel.position.localX,
     },
@@ -97,12 +95,20 @@ const FrontendXPlanePlatformDescriptorsInternal = {
     localVz: {
       dataref: XPDatarefs.flightModel.position.localVz,
     },
-    weatherUpdateImmediately: {
-      dataref: XPDatarefs.weather.updateImmediately,
-    },
     q: {
       dataref: XPDatarefs.flightModel.position.q,
       arrayIndexNameMap: { 0: "w", 1: "x", 2: "y", 3: "z" },
+    },
+    // Engine failure descriptors
+    engine0Seize: {
+      dataref: XPDatarefs.operationFailures.seize.seize0,
+    },
+    engine1Seize: {
+      dataref: XPDatarefs.operationFailures.seize.seize1,
+    },
+    // as used by ALIA-250 for the pusher
+    engine4Seize: {
+      dataref: XPDatarefs.operationFailures.seize.seize4,
     },
     // Pitot-static failure descriptors
     pitotPilotSideBlockage: {
@@ -164,7 +170,7 @@ export const BaseXPlanePlatformDescriptors: XPlanePlatformDescriptors = {
       dataref: XPDatarefs.flightModel.position.gpsSpeedMps,
       ratio: kKtsPerMetersPerSecond,
     },
-    verticalSpeedFpm: { dataref: XPDatarefs.flightModel.position.verticalSpeedFpm },
+    verticalSpeedUpFpm: { dataref: XPDatarefs.flightModel.position.verticalSpeedUpFpm },
   },
   attitude: {
     rollAngleDegRight: { dataref: XPDatarefs.flightModel.position.rollAngleDegRight },
@@ -282,8 +288,8 @@ export const BaseXPlanePlatformDescriptors: XPlanePlatformDescriptors = {
         VNAVSpeed: 20,
       } as Record<(typeof AutopilotAltitudeModes)[number], number>,
     },
-    targetVerticalSpeedFpm: {
-      dataref: XPDatarefs.cockpit.autopilot.targetVerticalSpeedFpm,
+    targetVerticalSpeedUpFpm: {
+      dataref: XPDatarefs.cockpit.autopilot.targetVerticalSpeedUpFpm,
     },
     shouldLevelWings: {
       command: { ref: XPCommandRefs.autopilot.returnToLevel },
@@ -298,7 +304,7 @@ export const BaseXPlanePlatformDescriptors: XPlanePlatformDescriptors = {
   systems: {
     batteryOn: { dataref: XPDatarefs.cockpit2.electrical.batteryOn },
     pitotHeatSwitchOn: { dataref: XPDatarefs.cockpit.switches.pitotHeatSwitchOn },
-    brakesOn: { dataref: XPDatarefs.flightModel.controls.brakesOn },
+    parkingBrakeOn: { dataref: XPDatarefs.flightModel.controls.parkingBrakeOn },
     governorSwitchOn: { dataref: XPDatarefs.cockpit2.engine.actuators.governorOn },
     totalEnergyAudioSwitchOn: { dataref: XPDatarefs.cockpit.switches.totalEnergyAudioSwitchOn },
     propHeatSwitchOn: { dataref: XPDatarefs.cockpit2.ice.propHeatSwitchOn },
@@ -418,6 +424,7 @@ export const BaseXPlanePlatformDescriptors: XPlanePlatformDescriptors = {
   },
   failures: {
     // undefined here because it's handled in a special case in the frontend
+    // in `FrontendXPlanePlatformDescriptorsInternal`
     scheduledAtAltitudeFtAgl: undefined,
     scheduledAtAirspeedKias: undefined,
     isFailed: undefined,
@@ -438,9 +445,15 @@ export const BaseXPlanePlatformDescriptors: XPlanePlatformDescriptors = {
       dataref: XPDatarefs.flightModel2.hasCrashed,
       command: { ref: XPCommandRefs.systems.fixAllSystems },
     },
+    shouldResetFlight: {
+      command: { ref: XPCommandRefs.operation.resetFlight },
+    },
   },
   freezes: {
     positionFreezeEnabled: {
+      dataref: XPDatarefs.time.groundSpeedRatio,
+      ratio: -1,
+      offset: 1,
       command: { ref: XPCommandRefs.freeze.groundSpeedFreezeToggle },
     },
   },

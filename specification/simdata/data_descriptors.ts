@@ -19,6 +19,7 @@ const PositionSimData = {
   },
   mslAltitudeFt: {
     type: ValueType.Number,
+    writableByPlatform: { xplane12: Writability.System },
   },
   indicatedAirspeedKts: {
     type: ValueType.Number,
@@ -257,6 +258,7 @@ const AutoPilotSimData = {
   isAutopilotEngaged: {
     type: ValueType.Boolean,
     visibility: Visibility.Always,
+    description: "don't forget isHeadingSelectEnabled and targetVerticalSpeedUpFpm",
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
   isFlightDirectorEngaged: {
@@ -273,14 +275,14 @@ const AutoPilotSimData = {
     type: ValueType.String,
     visibility: Visibility.Tool,
     description:
-      "allows setting altitudeHold and verticalSpeed modes only - requires autopilot engaged",
+      "allows setting altitudeHold and verticalSpeed modes only - also engages autopilot",
     enumValues: AutopilotAltitudeModes,
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
-  targetVerticalSpeedFpm: {
+  targetVerticalSpeedUpFpm: {
     type: ValueType.Number,
     visibility: Visibility.Tool,
-    description: "positive for climb, negative for decent",
+    description: "also enables verticalSpeed mode - don't forget altitudeBugFt",
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
   shouldLevelWings: {
@@ -299,6 +301,7 @@ const AutoPilotSimData = {
     type: ValueType.Number,
     visibility: Visibility.Tool,
     range: [0, 70000],
+    description: "level-off altitude when in verticalSpeed mode",
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
 } as const;
@@ -313,7 +316,7 @@ const SystemsSimData = {
     type: ValueType.Boolean,
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
-  brakesOn: {
+  parkingBrakeOn: {
     type: ValueType.Boolean,
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
@@ -377,12 +380,6 @@ const FailuresSimData = {
     mapKeys: AllFailureMapKeys,
   },
 };
-
-const WeightBalanceSimData = {
-  // TODO: payloadLbs - total weight of non-fuel payload in lbs
-  // TODO: fuelLbs - total weight of fuel in lbs (all tanks)
-  // TODO: totalWeightKg - total weight of aircraft in kg
-} as const;
 
 /** All cloud layer keys that shirley can see & use. */
 export const AllCloudLayerKeys = ["1", "2", "3"] as const;
@@ -589,20 +586,12 @@ const EnvironmentSimData = {
   shouldRegenerateWeather: {
     type: ValueType.Boolean,
     visibility: Visibility.Never,
-    description: "true immediately regenerates",
+    description: "applies weather changes immediately",
     writableByPlatform: { xplane12: Writability.Always },
   },
 } as const;
 
-const InitializationSimData = {
-  // TODO: airportCode - ICAO code of the airport
-  // TODO: runwayCode - runway identifier (e.g. 12L)
-  // TODO: finalApproachDistanceNm - distance to runway threshold (default 0 on runway)
-} as const;
-
 const SimulationSimData = {
-  // TODO: shouldLoadScenarioOne
-  // TODO: shouldAutoTrim
   aircraftName: {
     type: ValueType.String,
     visibility: Visibility.Tool,
@@ -625,13 +614,17 @@ const SimulationSimData = {
     description: "can be used to uncrash",
     writableByPlatform: { xplane12: Writability.AfterRead },
   },
+  shouldResetFlight: {
+    type: ValueType.Boolean,
+    visibility: Visibility.Never,
+    writableByPlatform: { xplane12: Writability.System },
+  },
 } as const;
 
 const FreezesSimData = {
-  // TODO: fuelFreezeEnabled
   positionFreezeEnabled: {
     type: ValueType.Boolean,
-    visibility: Visibility.Never,
+    visibility: Visibility.ToolAndAlwaysWhenTrue,
     writableByPlatform: { xplane12: Writability.Always },
   },
 } as const;
@@ -648,12 +641,7 @@ export const SimDataDescriptors = {
   autopilot: AutoPilotSimData as Record<keyof typeof AutoPilotSimData, DataDescriptor>,
   systems: SystemsSimData as Record<keyof typeof SystemsSimData, DataDescriptor>,
   failures: FailuresSimData as Record<keyof typeof FailuresSimData, DataDescriptor>,
-  weightBalance: WeightBalanceSimData as Record<keyof typeof WeightBalanceSimData, DataDescriptor>,
   environment: EnvironmentSimData as Record<keyof typeof EnvironmentSimData, DataDescriptor>,
-  initialization: InitializationSimData as Record<
-    keyof typeof InitializationSimData,
-    DataDescriptor
-  >,
   simulation: SimulationSimData as Record<keyof typeof SimulationSimData, DataDescriptor>,
   freezes: FreezesSimData as Record<keyof typeof FreezesSimData, DataDescriptor>,
 } as const;

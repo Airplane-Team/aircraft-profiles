@@ -50,3 +50,11 @@ https://airplane.team/fly/a/create
 Copy and paste your JSON profile file into the Shirley Profile Creator.
 
 For access to the latest features, join our [Discord server](https://airplane.team/discord) and ask to join the beta test group.
+
+# Other FlyShirley Repositories by Airplane Team
+
+Please star our repositories to show your support!
+
+- [Sample Challenges](https://github.com/Airplane-Team/sample-challenges) - Schemas and examples to help you utilize Shirley's powerful challenge system.
+- [Aircraft Profiles (this repo)](https://github.com/Airplane-Team/aircraft-profiles) - Schemas and sample profiles to teach Shirley about your favorite aircraft.
+- [Sim Interface](https://github.com/Airplane-Team/sim-interface) - Complete interface to connect Shirley to any sim. Or, utilize the Shirley protocol for your own web-based sim plugin.

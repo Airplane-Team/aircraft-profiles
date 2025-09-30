@@ -42,6 +42,9 @@ export const XplaneDescriptorSchema = PlatformDescriptorSchema.extend({
   /** The multiplication ratio to convert the dataref value to the quantity Shirley sees. */
   ratio: z.number().optional(),
 
+  /** The addition offset to convert the dataref value to the quantity Shirley sees. */
+  offset: z.number().optional(),
+
   /** If descriptor`type` (`ValueType`) is `(Number|Boolean|String)Map`, this represents a map
    * from the index inside of the dataref's array to each `descriptor.mapKeys`.
    *
